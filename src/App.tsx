@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useCallback, useState } from 'react';
 import './App.css';
+import { getDownloadUrl } from './services/youtube';
 
 function App() {
+  const [url, setUrl] = useState()
+  const handleChange = useCallback((event) => {
+    setUrl(event.target.value)
+  }, [setUrl])
+  const handleClick = useCallback(async () => {
+    const audioUrl = await getDownloadUrl(url);
+    setUrl(audioUrl)
+  }, [setUrl, url]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Youtubify</h2>
+      <input value={url} onChange={handleChange} />
+      <button onClick={handleClick}>Go</button>
+      <br />
+      <audio autoPlay controls src={url}></audio>
     </div>
   );
 }
