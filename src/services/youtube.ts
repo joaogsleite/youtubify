@@ -1,4 +1,5 @@
 import ytdl, { videoFormat } from 'ytdl-core';
+import { getKey } from '../utils/json';
 
 const originalFetch = window.fetch
 window.fetch = function(url: RequestInfo, init?: RequestInit | undefined) {
@@ -26,4 +27,28 @@ export async function getDownloadUrl(videoId: string) {
     return (format as any).mimeType.includes('audio/mp4')
   });
   return format[0].url;
+}
+
+function scraper(url: string) {
+  return fetch(url).then((response) => {
+    return response.text();
+  }).then((content) => {
+    content = content.split('window["ytInitialData"] = {')[1].split('};')[0];
+    return JSON.parse('{'+content+'}');
+  })
+}
+
+export function getPlaylists(userId: string) {
+  return scraper(`https://www.youtube.com/user/${userId}/playlists`).catch(() => {
+    return scraper(`https://www.youtube.com/channel/${userId}/playlists`)
+  }).then((obj) => {
+    return getKey(obj, 'playlistId');
+  });
+}
+
+export function getPlaylist(playlistId: string) {
+  const url = `https://www.youtube.com/playlist?list=${playlistId}`
+  return scraper(url).then((obj) => {
+    return getKey(obj, 'videoId')
+  })
 }

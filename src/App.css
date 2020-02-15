@@ -2,7 +2,10 @@
   text-align: center;
 }
 audio {
-  margin-top: 25px;
   width: 80%;
   max-width: 600px;
+}
+ul {
+  padding: 0;
+  list-style: none;
 }
