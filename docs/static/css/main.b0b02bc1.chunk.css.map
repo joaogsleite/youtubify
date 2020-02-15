@@ -1,1 +1,0 @@
-{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACE,iBACF,CACA,MACE,eAAgB,CAChB,SAAU,CACV,eACF","file":"main.b0b02bc1.chunk.css","sourcesContent":[".App {\n  text-align: center;\n}\naudio {\n  margin-top: 25px;\n  width: 80%;\n  max-width: 600px;\n}"]}
