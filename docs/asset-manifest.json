@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/youtubify/static/css/main.fbbb036e.chunk.css",
-    "main.js": "/youtubify/static/js/main.22c939af.chunk.js",
-    "main.js.map": "/youtubify/static/js/main.22c939af.chunk.js.map",
+    "main.js": "/youtubify/static/js/main.8629f674.chunk.js",
+    "main.js.map": "/youtubify/static/js/main.8629f674.chunk.js.map",
     "runtime-main.js": "/youtubify/static/js/runtime-main.c39d4d6a.js",
     "runtime-main.js.map": "/youtubify/static/js/runtime-main.c39d4d6a.js.map",
     "static/js/2.73ee8b8a.chunk.js": "/youtubify/static/js/2.73ee8b8a.chunk.js",
     "static/js/2.73ee8b8a.chunk.js.map": "/youtubify/static/js/2.73ee8b8a.chunk.js.map",
     "index.html": "/youtubify/index.html",
-    "precache-manifest.78faa2680d55b5a6312904b640641d6a.js": "/youtubify/precache-manifest.78faa2680d55b5a6312904b640641d6a.js",
+    "precache-manifest.e0d68c7ee7fd9877cf6acec09db9a882.js": "/youtubify/precache-manifest.e0d68c7ee7fd9877cf6acec09db9a882.js",
     "service-worker.js": "/youtubify/service-worker.js",
     "static/css/main.fbbb036e.chunk.css.map": "/youtubify/static/css/main.fbbb036e.chunk.css.map",
     "static/js/2.73ee8b8a.chunk.js.LICENSE.txt": "/youtubify/static/js/2.73ee8b8a.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.c39d4d6a.js",
     "static/js/2.73ee8b8a.chunk.js",
     "static/css/main.fbbb036e.chunk.css",
-    "static/js/main.22c939af.chunk.js"
+    "static/js/main.8629f674.chunk.js"
   ]
 }

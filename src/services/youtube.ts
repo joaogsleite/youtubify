@@ -39,13 +39,16 @@ function scraper(url: string) {
     } else {
       content = content.split('window["ytInitialData"] = {')[1].split('};')[0];
     }
+    if (!content) {
+      throw new Error('no content')
+    }
     return JSON.parse('{'+content+'}');
   })
 }
 
 export function getPlaylists(userId: string) {
-  return scraper(`https://youtube.com/user/${userId}/playlists`).catch(() => {
-    return scraper(`https://youtube.com/channel/${userId}/playlists`)
+  return scraper(`https://${isMobile() ? 'm.': ''}youtube.com/user/${userId}/playlists`).catch(() => {
+    return scraper(`https://${isMobile() ? 'm.': ''}youtube.com/channel/${userId}/playlists`)
   }).then((obj) => {
     return getKey(obj, ['playlistId', 'title']).map((playlist: any) => {
       return {

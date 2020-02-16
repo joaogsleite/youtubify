@@ -6,17 +6,12 @@ import { setCurrentUser, getCurrentUser } from './services/localStorage';
 function App() {
   const [url, setUrl] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false);
-  const [user, setUser] = useState<string>(getCurrentUser())
+  const [user, setUser] = useState<string>('');
   const [loadingUser, setLoadingUser] = useState<boolean>(false);
   const [playlists, setPlaylists] = useState<any[]>()
   const [playlistId, setPlaylistId] = useState<string>('')
   const [loadingVideos, setLoadingVideos] = useState<boolean>(false);
   const [videos, setVideos] = useState<any[]>()
-  useEffect(() => {
-    if (user) {
-      fetchUser()
-    }
-  }, [])
   const handleChange = useCallback((event) => {
     const value = event.target.value
     switch(event.target.name) {
@@ -30,20 +25,27 @@ function App() {
         return
     }
   }, [setUrl])
-  const fetchUser = useCallback(() => {
-    const userId = user.includes('/user/')
-    ? user.split('/user/')[1].split('/')[0]
-    : user.includes('/channel/')
-      ? user.split('/channel/')[1].split('/')[0]
-      : user
+  const fetchUser = useCallback((userId?: string) => {
+    userId = userId || (user.includes('/user/')
+      ? user.split('/user/')[1].split('/')[0]
+      : user.includes('/channel/')
+        ? user.split('/channel/')[1].split('/')[0]
+        : user)
     setUser(userId)
     setLoadingUser(true);
     getPlaylists(userId || '').then((playlists) => {
-      setCurrentUser(userId)
+      setCurrentUser(userId || '')
       setLoadingUser(false);
       setPlaylists(playlists as string[])
     })
   }, [user, setPlaylists, setLoadingUser])
+  useEffect(() => {
+    const currentUser = getCurrentUser()
+    if (currentUser) {
+      fetchUser(currentUser)
+    }
+    // eslint-disable-next-line
+  }, [])
   const fetchPlaylist = useCallback(() => {
     setLoadingVideos(true);
     getPlaylist(playlistId || '').then((videos) => {
@@ -63,7 +65,7 @@ function App() {
       <hr />
       <a target="_blank" href="http://youtube.com/user">Get my account url</a>
       <input placeholder="youtube account id/url" name="userId" value={user} onChange={handleChange} />
-      <button onClick={fetchUser}>Go</button>
+      <button onClick={()=>fetchUser()}>Go</button>
       {loadingUser && (
         <div className="loading"></div>
       )}

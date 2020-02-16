@@ -1,6 +1,6 @@
 
 export function getCurrentUser() {
-  return localStorage.getItem('userId') || '';
+  return localStorage.getItem('userId');
 }
 
 export function setCurrentUser(userId: string) {
