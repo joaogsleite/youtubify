@@ -31,9 +31,15 @@ function App() {
     }
   }, [setUrl])
   const fetchUser = useCallback(() => {
+    const userId = user.includes('/user/')
+    ? user.split('/user/')[1].split('/')[0]
+    : user.includes('/channel/')
+      ? user.split('/channel/')[1].split('/')[0]
+      : user
+    setUser(userId)
     setLoadingUser(true);
-    setCurrentUser(user)
-    getPlaylists(user || '').then((playlists) => {
+    getPlaylists(userId || '').then((playlists) => {
+      setCurrentUser(userId)
       setLoadingUser(false);
       setPlaylists(playlists as string[])
     })
@@ -55,7 +61,8 @@ function App() {
     <div className="App">
       <h1>Youtubify</h1>
       <hr />
-      <input placeholder="youtube user id" name="userId" value={user} onChange={handleChange} />
+      <a target="_blank" href="http://youtube.com/user">Get my account url</a>
+      <input placeholder="youtube account id/url" name="userId" value={user} onChange={handleChange} />
       <button onClick={fetchUser}>Go</button>
       {loadingUser && (
         <div className="loading"></div>
@@ -72,6 +79,7 @@ function App() {
         </ul>
       </>}
       <hr />
+      <a target="_blank" href="https://support.google.com/youtube/answer/3127309?hl=en">Your playlists must be public</a>
       <input placeholder="youtube playlist id" name="playlistId" value={playlistId} onChange={handleChange} />
       <button onClick={fetchPlaylist}>Go</button>
       {loadingVideos && (

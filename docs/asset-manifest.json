@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/youtubify/static/css/main.e9dec0b8.chunk.css",
-    "main.js": "/youtubify/static/js/main.a83cbfa0.chunk.js",
-    "main.js.map": "/youtubify/static/js/main.a83cbfa0.chunk.js.map",
+    "main.css": "/youtubify/static/css/main.fbbb036e.chunk.css",
+    "main.js": "/youtubify/static/js/main.22c939af.chunk.js",
+    "main.js.map": "/youtubify/static/js/main.22c939af.chunk.js.map",
     "runtime-main.js": "/youtubify/static/js/runtime-main.c39d4d6a.js",
     "runtime-main.js.map": "/youtubify/static/js/runtime-main.c39d4d6a.js.map",
     "static/js/2.73ee8b8a.chunk.js": "/youtubify/static/js/2.73ee8b8a.chunk.js",
     "static/js/2.73ee8b8a.chunk.js.map": "/youtubify/static/js/2.73ee8b8a.chunk.js.map",
     "index.html": "/youtubify/index.html",
-    "precache-manifest.e95b98b7895f9989c98c5fa886e9ef1d.js": "/youtubify/precache-manifest.e95b98b7895f9989c98c5fa886e9ef1d.js",
+    "precache-manifest.78faa2680d55b5a6312904b640641d6a.js": "/youtubify/precache-manifest.78faa2680d55b5a6312904b640641d6a.js",
     "service-worker.js": "/youtubify/service-worker.js",
-    "static/css/main.e9dec0b8.chunk.css.map": "/youtubify/static/css/main.e9dec0b8.chunk.css.map",
+    "static/css/main.fbbb036e.chunk.css.map": "/youtubify/static/css/main.fbbb036e.chunk.css.map",
     "static/js/2.73ee8b8a.chunk.js.LICENSE.txt": "/youtubify/static/js/2.73ee8b8a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c39d4d6a.js",
     "static/js/2.73ee8b8a.chunk.js",
-    "static/css/main.e9dec0b8.chunk.css",
-    "static/js/main.a83cbfa0.chunk.js"
+    "static/css/main.fbbb036e.chunk.css",
+    "static/js/main.22c939af.chunk.js"
   ]
 }
