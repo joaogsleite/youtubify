@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a3d627d4a64f8dd8cc9b39d0d2a26ab6",
+    "revision": "62462875b5d1cd602cce2954d698830f",
     "url": "/youtubify/index.html"
   },
   {
-    "revision": "78faf5e7e6e61ea0f1fd",
-    "url": "/youtubify/static/css/main.70ea9266.chunk.css"
+    "revision": "76a930670e5336a6ce04",
+    "url": "/youtubify/static/css/main.daa97360.chunk.css"
   },
   {
     "revision": "9c791186722fcac13277",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/youtubify/static/js/2.35791314.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "78faf5e7e6e61ea0f1fd",
+    "revision": "76a930670e5336a6ce04",
     "url": "/youtubify/static/js/main.ff6dd0a0.chunk.js"
   },
   {
