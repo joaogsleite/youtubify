@@ -10,3 +10,7 @@ export function setFavicon(href: string) {
   link.href = href;
   document.getElementsByTagName('head')[0].appendChild(link);
 }
+
+export function setPageTitle(title: string) {
+  document.title = title;
+}

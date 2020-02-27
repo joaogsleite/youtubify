@@ -3,6 +3,7 @@ import { useSelector } from '../../reducers';
 import { play } from '../../services/player';
 import Item from '../../components/Item';
 import './style.scss';
+import Loading from '../../components/Loading';
 
 const PlayingScreen: FC = () => {
   const playing = useSelector((state) => state.playing);
@@ -12,7 +13,12 @@ const PlayingScreen: FC = () => {
       <ul>
         <h2>Playing now:</h2>
         {playing 
-          ? <Item {...playing} />
+          ? <> 
+              {playing.loading &&
+                <Loading />
+              } 
+              <Item {...playing} />
+            </>
           : <p>Nothing is playing. <br />Choose a video from queue below.</p>
         }
         <br />

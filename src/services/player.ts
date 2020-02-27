@@ -1,12 +1,13 @@
 import * as yt from "./youtube";
 import { dispatch } from "../reducers";
-import { setFavicon } from "../utils/responsive";
+import { setFavicon, setPageTitle } from "../utils/responsive";
 
 export interface ITrack {
   title: string,
   thumbnail: string,
   id: string,
   audioSrc?: string,
+  loading?: boolean,
 }
 
 async function fetchTrack(item: ITrack) {
@@ -19,9 +20,11 @@ async function fetchTrack(item: ITrack) {
 }
 
 export function play(item: ITrack) {
+  setFavicon(item.thumbnail);
+  setPageTitle(item.title);
+  dispatch({ type: 'PLAY', payload: {...item, loading: true} });
   fetchTrack(item).then((item) => {
-    setFavicon(item.thumbnail);
-    dispatch({ type: 'PLAY', payload: item });
+    dispatch({ type: 'PLAY', payload: {...item, loading: false} });
   })
 }
 
