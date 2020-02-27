@@ -1,4 +1,4 @@
-import React, { useCallback, FC, memo } from 'react';
+import React, { useCallback, FC, memo, RefObject } from 'react';
 import classNames from 'classnames';
 import './style.scss';
 
@@ -8,9 +8,11 @@ export interface IInputProps {
   value: any,
   className?: string,
   placeholder?: string,
+  ref?: RefObject<HTMLInputElement>,
 };
 
-const Input: FC<IInputProps> = ({ placeholder, className, onChange, name, value }) => {
+const Input: FC<IInputProps> = React.forwardRef((props, ref) => {
+  const { placeholder, className, onChange, name, value } = props;
   const handleChange = useCallback((event) => {
     onChange(event.target.value, name);
   }, [onChange, name])
@@ -20,6 +22,7 @@ const Input: FC<IInputProps> = ({ placeholder, className, onChange, name, value 
   })
   return (
     <input
+      ref={ref}
       placeholder={placeholder}
       className={inputClasses}
       name={name}
@@ -27,6 +30,6 @@ const Input: FC<IInputProps> = ({ placeholder, className, onChange, name, value 
       onChange={handleChange}
     />
   );
-};
+});
 
 export default memo(Input);

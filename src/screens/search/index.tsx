@@ -1,4 +1,4 @@
-import React, { useState, useCallback, FC, memo } from 'react';
+import React, { useState, useCallback, FC, memo, useRef, useEffect } from 'react';
 import * as yt from '../../services/youtube';
 import { ITrack, enqueue } from '../../services/player';
 import Item from '../../components/Item';
@@ -8,10 +8,15 @@ import Loading from '../../components/Loading';
 
 let timeout: NodeJS.Timeout;
 
-const SearchScreen: FC = () => {
+export interface ISearchScreenProps {
+  visible?: boolean,
+}
+
+const SearchScreen: FC<ISearchScreenProps> = ({ visible }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [value, setValue] = useState<string>('');
   const [results, setResults] = useState<ITrack[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const search = useCallback(async () => {
     setLoading(true);
@@ -28,9 +33,17 @@ const SearchScreen: FC = () => {
     timeout = setTimeout(search, 500);
   }, [setValue, search]);
 
+  useEffect(() => {
+    console.log('visible', visible)
+    console.log('inputRef.current', inputRef && inputRef.current)
+    if (visible && inputRef.current && !inputRef.current.value) {
+      inputRef.current.focus()
+    }
+  }, [inputRef, visible])
+
   return (
     <div className="search-screen">
-      <Input placeholder="Search" value={value} onChange={handleChange} />
+      <Input ref={inputRef} placeholder="Search" value={value} onChange={handleChange} />
       <ul>
         {loading && <Loading /> }
         {results.map((item, index) => 
