@@ -8,7 +8,7 @@ import SearchScreen from './screens/search';
 import './App.scss';
 
 const App: FC = () => {
-  const [active, setActive] = useState<number>(0);
+  const [active, setActive] = useState<number>(1);
   const tabs = [
     { comp: <AccountScreen />, title: 'Account' },
     { comp: <PlayingScreen />, title: 'Playing' },

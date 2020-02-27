@@ -36,13 +36,13 @@ body {
     width: 100%;
     height: 60px;
     display: flex;
-    justify-content: space-around;
     background: #f0f0f0;
     li {
+      width: 33%;
       cursor: pointer;
       padding: 21px;
       list-style: none;
-      margin: 0 20px;
+      text-align: center;
       &.active {
         font-weight: bold;
       }

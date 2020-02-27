@@ -13,11 +13,12 @@ const PlayingScreen: FC = () => {
         <h2>Playing now:</h2>
         {playing 
           ? <Item {...playing} />
-          : <p>(nothing is playing)</p>
+          : <p>Nothing is playing. <br />Choose a video from queue below.</p>
         }
+        <br />
         <h2>Queue:</h2>
         {queue.length === 0 &&
-          <p>(no items in queue)</p>
+          <p>No videos in queue. <br />Search some videos and add them.</p>
         }
         {queue.map((video, index) =>
           <Item key={index} {...video} onClick={play} />
