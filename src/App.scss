@@ -1,50 +1,50 @@
-.App {
-  .loading {
-    background: url('./assets/loading.gif');
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    background-size: 350%;
-    background-position: center;
-    float: left;
-  }
-  a {
-    display: block;
-    margin-bottom: 10px;
-  }
-  input {
-    width: calc(100% - 130px);
-    height: 40px;
-    box-sizing: border-box;
-  }
-  button {
-    width: 80px;
-    height: 40px;
-  }
-  audio {
-    width: 100%;
-    max-width: 600px;
-  }
-  h2 {
-    clear: left;
-  }
-  hr {
-    margin: 40px 0;
-  }
-  ul {
-    padding: 0;
-    list-style: none;
-    li {
-      margin-bottom: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      img {
-        width: 80px;
-        height: auto;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+.app {
+  .tabs {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 60px);
+    overflow-x: hidden;
+    .tab {
+      &::-webkit-scrollbar {
+        display: none;
       }
-      span {
-        margin-left: 10px;
+      overflow-x: hidden;
+      width: 100vw;
+      transition: left 0.3s;
+      position: absolute;
+      left: -100vw;
+      top: 0;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      &.active {
+        left: 0;
+      }
+      &.active ~ * {
+        left: 100vw;
+      }
+    }
+  }
+  .menubar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    background: #f0f0f0;
+    li {
+      cursor: pointer;
+      padding: 21px;
+      list-style: none;
+      margin: 0 20px;
+      &.active {
+        font-weight: bold;
       }
     }
   }

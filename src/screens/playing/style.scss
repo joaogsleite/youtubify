@@ -1,0 +1,12 @@
+.playing-screen {
+  audio {
+    position: fixed;
+    bottom: 60px;
+    width: 100%;
+    background: #f0f0f0;
+    &::-webkit-media-controls-panel {
+      background: #f0f0f0;
+    }
+    outline: none;
+  }
+}

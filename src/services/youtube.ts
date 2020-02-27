@@ -17,7 +17,7 @@ window.fetch = function(url: RequestInfo, init?: RequestInit | undefined) {
   return originalFetch(url, init)
 }
 
-export async function getDownloadUrl(videoId: string) {
+export async function getDownloadUrl(videoId: string): Promise<string> {
   const filter = (format: videoFormat) => {
     return format.mimeType
       ? format.mimeType.includes('audio/mp4')
@@ -72,4 +72,22 @@ export function getPlaylist(playlistId: string) {
       }
     })
   })
+}
+
+export function searchVideos(text: string) {
+  const query = text.split(' ').join('+');
+  const url = `https://youtube.com/results?search_query=${query}&sp=EgIQAQ%3D%3D`;
+  return scraper(url).then((obj) => {
+    return getKey(obj, ['videoId', 'title']).map((video: any) => {
+      console.log(video)
+      const title = video.title.simpleText || getKey(video.title, 'text')[0].text
+      const thumbnailObj = getKey(video, ['height', 'url'])[0]
+      const thumbnail = thumbnailObj && thumbnailObj.url
+      return {
+        id: video.videoId,
+        title,
+        thumbnail,
+      }
+    })
+  });
 }
