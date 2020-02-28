@@ -14,10 +14,3 @@ jobs:
         node-version: '12.x'
     - run: npm install
     - run: npm run build
-    - run: |
-        cd build/
-        git init
-        git add .
-        git config --global user.name "gh-pages"
-        git commit -m 'Deploy to github pages'
-        git push --force https://${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git master:gh-pages
