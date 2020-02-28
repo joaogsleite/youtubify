@@ -19,5 +19,5 @@ jobs:
     - run: npm run build
     - uses: maxheld83/ghpages@v0.2.1
       with:
-        BUILD_DIR: build/
+        BUILD_DIR: build
         GH_PAT: ${{ secrets.GH_PAT }}
