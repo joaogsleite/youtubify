@@ -11,43 +11,43 @@ export const playerInitialState = {
   playing: undefined,
 };
 
+export const store: IPlayerState = {...playerInitialState};
+
 export default function playingReducer(state: IPlayerState, action: IAction) {
-  let queue = [...state.queue];
-  let playing = state.playing;
+  store.queue = [...state.queue];
+  store.playing = state.playing && { ...state.playing};
   switch (action.type) {
     case 'PLAY':
-      playing = action.payload;
+      store.playing = action.payload;
       // eslint-disable-next-line
     case 'REMOVE':
-      queue = queue.filter((item) => {
+      store.queue = store.queue.filter((item) => {
         return item.id !== action.payload.id;
       })
       return {
         ...state,
-        playing,
-        queue,
+        ...store,
       };
     case 'ENQUEUE':
-      if (!queue.find((item => item.id === action.payload.id))) {
-        queue.push(action.payload);
+      if (!store.queue.find((item => item.id === action.payload.id))) {
+        store.queue.push(action.payload);
       }
       return {
         ...state,
-        queue,
+        ...store,
       };
     case 'UPDATE':
-      const index = queue.findIndex((item => item.id === action.payload.id))
-      queue[index] = action.payload;
+      const index = store.queue.findIndex((item => item.id === action.payload.id))
+      store.queue[index] = action.payload;
       return {
         ...state,
-        queue,
+        ...store,
       }
     case 'DEQUEUE':
-      playing = queue.shift();
+      store.playing = store.queue.shift();
       return {
         ...state,
-        playing,
-        queue,
+        ...store,
       }
     default: 
       return state;

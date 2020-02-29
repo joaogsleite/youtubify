@@ -1,6 +1,7 @@
 import * as yt from "./youtube";
 import { dispatch } from "../reducers";
-import { setFavicon, setPageTitle } from "../utils/responsive";
+import { store } from "../reducers/player";
+//import { setFavicon, setPageTitle } from "../utils/responsive";
 
 export interface ITrack {
   title: string,
@@ -20,8 +21,8 @@ async function fetchTrack(item: ITrack) {
 }
 
 export function play(item: ITrack) {
-  setFavicon(item.thumbnail);
-  setPageTitle(item.title);
+  //setFavicon(item.thumbnail);
+  //setPageTitle(item.title);
   dispatch({ type: 'PLAY', payload: {...item, loading: true} });
   fetchTrack(item).then((item) => {
     dispatch({ type: 'PLAY', payload: {...item, loading: false} });
@@ -33,10 +34,14 @@ export function dequeue() {
 }
 
 export function enqueue(item: ITrack) {
-  dispatch({ type: 'ENQUEUE', payload: item });
-  fetchTrack(item).then((item) => {
-    dispatch({ type: 'UPDATE', payload: item });
-  })
+  if(!store.playing) {
+    play(item);
+  } else {
+    dispatch({ type: 'ENQUEUE', payload: item });
+    fetchTrack(item).then((item) => {
+      dispatch({ type: 'UPDATE', payload: item });
+    })
+  }
 }
 
 export function remove(item: Partial<ITrack>) {

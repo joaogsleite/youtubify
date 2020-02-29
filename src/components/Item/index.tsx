@@ -11,6 +11,7 @@ export interface IItemProps extends ITrack {
 const Item: FC<IItemProps> = (props) => {
   const { title, thumbnail, onClick } = props
   const queue = useSelector((state) => state.queue);
+  const playing = useSelector((state) => state.playing) || { id: null };
   const handleClick = useCallback(() => {
     if (onClick) {
       onClick(props);
@@ -18,7 +19,7 @@ const Item: FC<IItemProps> = (props) => {
   }, [props, onClick])
   const itemClasses = classNames({
     'track-item': true,
-    'enqueued': queue.find(item => item.id === props.id),
+    'enqueued': queue.find(item => item.id === props.id) || playing.id === props.id,
   })
   return (
     <div className={itemClasses} onClick={handleClick}>

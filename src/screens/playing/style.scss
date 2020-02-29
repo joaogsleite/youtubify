@@ -1,6 +1,8 @@
 .playing-screen {
   audio {
+    z-index: 2;
     position: fixed;
+    border-top: 1px solid #ddd;
     bottom: 60px;
     width: 100%;
     background: #f0f0f0;

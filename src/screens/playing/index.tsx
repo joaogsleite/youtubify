@@ -1,6 +1,6 @@
 import React, { FC, memo } from 'react';
 import { useSelector } from '../../reducers';
-import { play } from '../../services/player';
+import { play, dequeue } from '../../services/player';
 import Item from '../../components/Item';
 import './style.scss';
 import Loading from '../../components/Loading';
@@ -30,7 +30,12 @@ const PlayingScreen: FC = () => {
           <Item key={index} {...video} onClick={play} />
         )}
       </ul>
-      <audio autoPlay controls src={playing && playing.audioSrc}></audio>
+      <audio
+        onEnded={dequeue}
+        autoPlay
+        controls
+        title={playing && playing.title}
+        src={playing && playing.audioSrc}></audio>
     </div>
   )
 }
