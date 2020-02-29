@@ -1,7 +1,7 @@
 import * as yt from "./youtube";
 import { dispatch } from "../reducers";
 import { store } from "../reducers/player";
-//import { setFavicon, setPageTitle } from "../utils/responsive";
+import { setPageTitle } from "../utils/responsive";
 
 export interface ITrack {
   title: string,
@@ -22,7 +22,7 @@ async function fetchTrack(item: ITrack) {
 
 export function play(item: ITrack) {
   //setFavicon(item.thumbnail);
-  //setPageTitle(item.title);
+  setPageTitle(item.title);
   dispatch({ type: 'PLAY', payload: {...item, loading: true} });
   fetchTrack(item).then((item) => {
     dispatch({ type: 'PLAY', payload: {...item, loading: false} });
