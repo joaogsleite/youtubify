@@ -79,7 +79,6 @@ export function searchVideos(text: string) {
   const url = `https://youtube.com/results?search_query=${query}&sp=EgIQAQ%3D%3D`;
   return scraper(url).then((obj) => {
     return getKey(obj, ['videoId', 'title']).map((video: any) => {
-      console.log(video)
       const title = video.title.simpleText || getKey(video.title, 'text')[0].text
       const thumbnailObj = getKey(video, ['height', 'url'])[0]
       const thumbnail = thumbnailObj && thumbnailObj.url

@@ -34,8 +34,6 @@ const SearchScreen: FC<ISearchScreenProps> = ({ visible }) => {
   }, [setValue, search]);
 
   useEffect(() => {
-    console.log('visible', visible)
-    console.log('inputRef.current', inputRef && inputRef.current)
     if (visible && inputRef.current && !inputRef.current.value) {
       inputRef.current.focus()
     }

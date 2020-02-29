@@ -12,7 +12,6 @@ export interface ITrack {
 }
 
 async function fetchTrack(item: ITrack) {
-  console.log('item', item)
   if (!item.audioSrc) {
     const audioSrc = await yt.getDownloadUrl(item.id);
     return { ...item, audioSrc }
