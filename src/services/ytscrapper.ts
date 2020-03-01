@@ -53,10 +53,12 @@ export function searchVideos(text: string) {
       const title = video.title.simpleText || getKey(video.title, 'text')[0].text
       const thumbnailObj = getKey(video, ['height', 'url'])[0]
       const thumbnail = thumbnailObj && thumbnailObj.url
+      const duration = video.lengthText.simpleText || getKey(video.lengthText, 'text')[0].text
       return {
         id: video.videoId,
         title,
         thumbnail,
+        duration,
       }
     })
   });

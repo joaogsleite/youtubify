@@ -9,7 +9,7 @@ export interface IItemProps extends ITrack {
 }
 
 const Item: FC<IItemProps> = (props) => {
-  const { title, thumbnail, onClick } = props
+  const { title, thumbnail, duration, onClick } = props
   const queue = useSelector((state) => state.queue);
   const playing = useSelector((state) => state.playing) || { id: null };
   const handleClick = useCallback(() => {
@@ -24,7 +24,10 @@ const Item: FC<IItemProps> = (props) => {
   return (
     <div className={itemClasses} onClick={handleClick}>
       <img alt={title} src={thumbnail} />
-      <h4>{title}</h4>
+      <div className="details">
+        <h4 className="title">{title}</h4>
+        <p className="duration">{duration}</p>
+      </div>
     </div>
   )
 }

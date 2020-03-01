@@ -9,6 +9,7 @@ export interface ITrack {
   id: string,
   audioSrc?: string,
   loading?: boolean,
+  duration?: string,
 }
 
 async function fetchTrack(item: ITrack) {
