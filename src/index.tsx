@@ -4,6 +4,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from './reducers';
 
+import './style/index.scss';
+
 ReactDOM.render(
   <Provider>
     <App />

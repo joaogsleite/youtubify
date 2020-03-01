@@ -18,26 +18,31 @@ const SearchScreen: FC<ISearchScreenProps> = ({ visible }) => {
   const [results, setResults] = useState<ITrack[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const search = useCallback(async () => {
+  const search = useCallback(async (value) => {
     setLoading(true);
-    const results = await yt.searchVideos(value || '');
-    setResults(results);
+    if (value) {
+      const results = await yt.searchVideos(value);
+      setResults(results);
+    } else {
+      setResults([]);
+    }
     setLoading(false);
-  }, [value])
+  }, [setLoading, setResults])
 
   const handleChange = useCallback((value) => {
+    setLoading(true);
     if (timeout) {
       clearTimeout(timeout);
     }
     setValue(value);
-    timeout = setTimeout(search, 500);
+    timeout = setTimeout(() => search(value), 500);
   }, [setValue, search]);
 
   useEffect(() => {
     if (visible && inputRef.current && !inputRef.current.value) {
-      inputRef.current.focus()
+      inputRef.current.focus();
     }
-  }, [inputRef, visible])
+  }, [inputRef, visible]);
 
   return (
     <div className="search-screen">

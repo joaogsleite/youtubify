@@ -3,7 +3,7 @@ import './style.scss';
 
 const Loading: FC = () => {
   return (
-    <div className="loading"></div>
+    <i className="loading fas fa-spinner fa-pulse"></i>
   );
 };
 

@@ -14,13 +14,12 @@ export interface ITrack {
 async function fetchTrack(item: ITrack) {
   if (!item.audioSrc) {
     const audioSrc = await yt.getDownloadUrl(item.id);
-    return { ...item, audioSrc }
+    return { ...item, audioSrc };
   }
   return { ...item };
 }
 
 export function play(item: ITrack) {
-  //setFavicon(item.thumbnail);
   setPageTitle(item.title);
   dispatch({ type: 'PLAY', payload: {...item, loading: true} });
   fetchTrack(item).then((item) => {
@@ -39,7 +38,7 @@ export function enqueue(item: ITrack) {
     dispatch({ type: 'ENQUEUE', payload: item });
     fetchTrack(item).then((item) => {
       dispatch({ type: 'UPDATE', payload: item });
-    })
+    });
   }
 }
 

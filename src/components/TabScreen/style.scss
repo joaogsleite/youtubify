@@ -1,0 +1,25 @@
+.tab-screens {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 60px);
+  overflow-x: hidden;
+  .tab-screen {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    overflow-x: hidden;
+    width: 100vw;
+    transition: left 0.3s;
+    position: absolute;
+    left: -100vw;
+    top: 0;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    &.active {
+      left: 0;
+    }
+    &.active ~ * {
+      left: 100vw;
+    }
+  }
+}
