@@ -11,17 +11,17 @@ const App: FC = () => {
   return (
     <div className="app">
       <TabScreen 
-        tabs={[
+        screens={[
           AccountScreen,
           PlayingScreen,
           SearchScreen,
         ]}
       />
       <TabBar
-        tabs={[
-          { name: 'Account', icon: 'user'     },
-          { name: 'Playing', icon: 'waveform' },
-          { name: 'Search',  icon: 'search'   },
+        icons={[
+          'user',
+          'waveform',
+          'search',
         ]} 
       />
     </div>

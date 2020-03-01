@@ -17,6 +17,7 @@ export default function navigationReducer(state: INavigationState, action: IActi
       break;
   }
   return {
+    ...state,
     ...store,
   };
 };

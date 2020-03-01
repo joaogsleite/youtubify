@@ -1,4 +1,4 @@
-import * as yt from "./youtube";
+import * as ytdl from "./ytdl";
 import { dispatch } from "../reducers";
 import { store } from "../reducers/player";
 import { setPageTitle } from "../utils/responsive";
@@ -13,7 +13,7 @@ export interface ITrack {
 
 async function fetchTrack(item: ITrack) {
   if (!item.audioSrc) {
-    const audioSrc = await yt.getDownloadUrl(item.id);
+    const audioSrc = await ytdl.getDownloadUrl(item.id);
     return { ...item, audioSrc };
   }
   return { ...item };

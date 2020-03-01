@@ -1,5 +1,5 @@
 import React, { useState, useCallback, FC, memo, useRef, useEffect } from 'react';
-import * as yt from '../../services/youtube';
+import * as yt from '../../services/ytscrapper';
 import { ITrack, enqueue } from '../../services/player';
 import Item from '../../components/Item';
 import Input from '../../components/Input';

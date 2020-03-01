@@ -4,23 +4,23 @@ import { useSelector } from '../../reducers';
 import "./style.scss";
 
 export interface ITabScreenProps {
-  tabs: React.NamedExoticComponent<{ visible: boolean }>[],
+  screens: React.NamedExoticComponent<{ visible: boolean }>[],
 };
 
-const TabScreen: FC<ITabScreenProps> = ({ tabs }) => {
+const TabScreen: FC<ITabScreenProps> = ({ screens }) => {
 
   const active = useSelector((state) => state.activeTab);
 
   return (
     <div className="tab-screens">
-      {tabs.map((Tab, index) => {
+      {screens.map((Screen, index) => {
         const tabClasses = classNames({ 
           'tab-screen': true,
           'active': index === active,
         })
         return (
           <div key={index} className={tabClasses}>
-            <Tab visible={index === active} />
+            <Screen visible={index === active} />
           </div>
         )
       })}

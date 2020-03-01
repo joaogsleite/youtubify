@@ -4,10 +4,10 @@ import { dispatch, useSelector } from '../../reducers';
 import './style.scss';
 
 export interface ITabBarProps {
-  tabs: Array<{ name: string, icon: string }>,
+  icons: string[],
 };
 
-const TabBar: FC<ITabBarProps> = ({ tabs }) => {
+const TabBar: FC<ITabBarProps> = ({ icons }) => {
 
   const setActive = useCallback((index) => () => {
     dispatch({ type: 'SET_ACTIVE_TAB', payload: index });
@@ -17,13 +17,13 @@ const TabBar: FC<ITabBarProps> = ({ tabs }) => {
 
   return (
     <div className="tab-bar">
-      {tabs.map((tab, index) => {
+      {icons.map((icon, index) => {
         const menuClasses = classNames({
           'active': index === active,
         })
         return (
           <li key={index} className={menuClasses} onClick={setActive(index)}>
-            <i className={`fas fa-${tab.icon}`}></i>
+            <i className={`fas fa-${icon}`}></i>
           </li> 
         )
       })}
