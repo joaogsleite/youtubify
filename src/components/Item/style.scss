@@ -4,10 +4,15 @@
   display: flex;
   align-items: center;
   img {
+    flex-shrink: 0;
+    flex-grow: 0;
     width: 80px;
     height: 60px;
   }
   .details {
+    width: calc(100% - 80px);
+    flex-grow: 0;
+    flex-shrink: 0;
     height: 60px;
     margin-left: 10px;
     display: flex;
