@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/youtubify/static/css/main.5cbe8f36.chunk.css",
+    "main.js": "/youtubify/static/js/main.012f1fdf.chunk.js",
+    "main.js.map": "/youtubify/static/js/main.012f1fdf.chunk.js.map",
+    "runtime-main.js": "/youtubify/static/js/runtime-main.70ec9f96.js",
+    "runtime-main.js.map": "/youtubify/static/js/runtime-main.70ec9f96.js.map",
+    "static/js/2.c8ac5b07.chunk.js": "/youtubify/static/js/2.c8ac5b07.chunk.js",
+    "static/js/2.c8ac5b07.chunk.js.map": "/youtubify/static/js/2.c8ac5b07.chunk.js.map",
+    "index.html": "/youtubify/index.html",
+    "precache-manifest.42a6e48089b2c8b5f81a5963ebb6a558.js": "/youtubify/precache-manifest.42a6e48089b2c8b5f81a5963ebb6a558.js",
+    "service-worker.js": "/youtubify/service-worker.js",
+    "static/css/main.5cbe8f36.chunk.css.map": "/youtubify/static/css/main.5cbe8f36.chunk.css.map",
+    "static/js/2.c8ac5b07.chunk.js.LICENSE.txt": "/youtubify/static/js/2.c8ac5b07.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/youtubify/static/media/fa-solid-900.e245d7d6.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.70ec9f96.js",
+    "static/js/2.c8ac5b07.chunk.js",
+    "static/css/main.5cbe8f36.chunk.css",
+    "static/js/main.012f1fdf.chunk.js"
+  ]
+}
